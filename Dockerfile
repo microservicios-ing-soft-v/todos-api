@@ -1,9 +1,9 @@
-FROM python:3.9-slim
+FROM node:14-alpine
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY package*.json ./
+RUN npm install
 
 COPY . .
 
@@ -15,4 +15,4 @@ ENV ZIPKIN_URL=http://localhost:9411/api/v2/spans
 
 EXPOSE 8082
 
-CMD ["python", "app.py"]
+CMD ["node", "server.js"]
