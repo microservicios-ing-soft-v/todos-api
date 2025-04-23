@@ -15,8 +15,8 @@ env:
   KEY_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
   VM_USER: ${{ secrets.VM_ADMIN_USERNAME }}
   VM_PASSWORD: ${{ secrets.VM_ADMIN_PASSWORD }}
-  SERVICE_NAME: 'users-api'
-  INFRA_REPO_FOLDER: 'todos-api'
+  SERVICE_NAME: 'todos-api'
+  INFRA_REPO_FOLDER: 'infrastructure'
 
 jobs:
   build_push_deploy:
