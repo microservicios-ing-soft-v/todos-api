@@ -62,3 +62,15 @@ routes(app, {tracer, redisClient, logChannel})
 app.listen(port, function () {
   console.log('todo list RESTful API server started on: ' + port)
 })
+
+// HEALTH
+app.get('/health', (req, res) => {
+  // Verificar conexiones a dependencias (Redis)
+  const isRedisConnected = redisClient.connected;
+  
+  if (isRedisConnected) {
+    res.status(200).json({ status: 'UP' });
+  } else {
+    res.status(503).json({ status: 'DOWN', details: 'Redis not connected' });
+  }
+});
